@@ -14,6 +14,7 @@ import javafx.scene.layout.VBox;
 import java.util.EnumMap;
 
 public class OutputPanel extends VBox {
+    private static final double LOG_SCROLL_SPEED = 1.20;
 
     public enum Source {
         ALL("全部"),
@@ -57,7 +58,7 @@ public class OutputPanel extends VBox {
             "-fx-font-family: Consolas; -fx-font-size: 11; -fx-border-color: #ccc;"
         );
         outputArea.addEventFilter(ScrollEvent.SCROLL, event -> {
-            double delta = event.getDeltaY() * 0.12;
+            double delta = event.getDeltaY() * LOG_SCROLL_SPEED;
             double next = outputArea.getScrollTop() - delta;
             outputArea.setScrollTop(Math.max(0.0, next));
             event.consume();

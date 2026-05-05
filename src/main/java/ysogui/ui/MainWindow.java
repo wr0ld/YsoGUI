@@ -78,6 +78,7 @@ public class MainWindow {
         Scene scene = new Scene(root);
         applyLightTheme(scene);
         stage.setScene(scene);
+        stage.setOnCloseRequest(e -> shutdown());
 
         loadAppState();
         loadLastJar();
@@ -547,6 +548,12 @@ public class MainWindow {
     private void applyLightTheme(Scene scene) {
         // 应用浅主题
         scene.getRoot().setStyle("-fx-base: #f0f0f0; -fx-background: #ffffff;");
+    }
+
+    public void shutdown() {
+        if (exploitPanel != null) {
+            exploitPanel.shutdown();
+        }
     }
 }
 

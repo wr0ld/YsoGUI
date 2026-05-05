@@ -36,6 +36,7 @@ public class RmiDeserialServer {
     private static final byte STREAM_PROTOCOL = 75;
     private static final byte SINGLE_OP_PROTOCOL = 76;
     private static final byte MULTIPLEX_PROTOCOL = 77;
+    private static final byte PROTOCOL_ACK = 78;
 
     private static final byte TRANSPORT_CALL = 80;
     private static final byte TRANSPORT_RETURN = 81;
@@ -119,17 +120,20 @@ public class RmiDeserialServer {
         in.mark(4);
         DataInputStream dataIn = new DataInputStream(in);
         DataOutputStream dataOut = new DataOutputStream(socket.getOutputStream());
+        logger.accept("[RMI-Deser] 收到连接: " + socket.getRemoteSocketAddress());
 
         int magic = dataIn.readInt();
         short version = dataIn.readShort();
+        logger.accept("[RMI-Deser] 握手头: magic=0x" + Integer.toHexString(magic) + ", version=" + version);
         if (magic != JRMI_MAGIC || version != JRMI_VERSION) {
             logger.accept("[RMI-Deser] 非 JRMI 请求，已关闭");
             return;
         }
 
         byte protocol = dataIn.readByte();
+        logger.accept("[RMI-Deser] 传输协议: " + protocolName(protocol) + " (" + protocol + ")");
         if (protocol == STREAM_PROTOCOL) {
-            dataOut.writeByte(TRANSPORT_PING_ACK);
+            dataOut.writeByte(PROTOCOL_ACK);
             InetSocketAddress remote = (InetSocketAddress) socket.getRemoteSocketAddress();
             String host = remote.getHostName() != null
                 ? remote.getHostName()
@@ -137,10 +141,15 @@ public class RmiDeserialServer {
             dataOut.writeUTF(host);
             dataOut.writeInt(remote.getPort());
             dataOut.flush();
-            dataIn.readUTF();
-            dataIn.readInt();
+            String clientHost = dataIn.readUTF();
+            int clientPort = dataIn.readInt();
+            logger.accept("[RMI-Deser] STREAM 握手完成: client=" + clientHost + ":" + clientPort);
+        } else if (protocol == MULTIPLEX_PROTOCOL) {
+            throw new IOException("Unsupported RMI protocol: Multiplex");
         } else if (protocol != SINGLE_OP_PROTOCOL) {
             throw new IOException("Unsupported RMI protocol: " + protocol);
+        } else {
+            logger.accept("[RMI-Deser] SINGLE_OP 模式，无需额外握手");
         }
 
         doMessage(socket, dataIn, dataOut, stage1Payload);
@@ -149,6 +158,7 @@ public class RmiDeserialServer {
     private void doMessage(Socket socket, DataInputStream in, DataOutputStream out,
                            Object stage1Payload) throws Exception {
         int op = in.read();
+        logger.accept("[RMI-Deser] 收到传输操作码: " + transportName(op) + " (" + op + ")");
         switch (op) {
             case TRANSPORT_CALL:
                 doCall(in, out, stage1Payload);
@@ -177,11 +187,13 @@ public class RmiDeserialServer {
         }
 
         int hash = objID.hashCode();
+        logger.accept("[RMI-Deser] ObjID hash=" + hash);
         if (hash == DGC_OBJ_ID_HASH) {
             handleDgc(ois);
             return;
         }
         if (hash != REGISTRY_OBJ_ID_HASH) {
+            logger.accept("[RMI-Deser] 非 Registry ObjID，忽略");
             return;
         }
 
@@ -194,6 +206,7 @@ public class RmiDeserialServer {
                                          Object stage1Payload) throws Exception {
         int op = in.readInt();
         in.readLong(); // interface hash
+        logger.accept("[RMI-Deser] Registry op=" + op);
         if (op != REGISTRY_LOOKUP_OP) {
             return false;
         }
@@ -313,6 +326,36 @@ public class RmiDeserialServer {
     private boolean isSocketClosed(Throwable t) {
         String msg = safeMessage(t);
         return msg.contains("closed") || msg.contains("forcibly closed");
+    }
+
+    private String protocolName(int protocol) {
+        switch (protocol) {
+            case STREAM_PROTOCOL:
+                return "STREAM";
+            case SINGLE_OP_PROTOCOL:
+                return "SINGLE_OP";
+            case MULTIPLEX_PROTOCOL:
+                return "MULTIPLEX";
+            default:
+                return "UNKNOWN";
+        }
+    }
+
+    private String transportName(int op) {
+        switch (op) {
+            case TRANSPORT_CALL:
+                return "CALL";
+            case TRANSPORT_RETURN:
+                return "RETURN";
+            case TRANSPORT_PING:
+                return "PING";
+            case TRANSPORT_PING_ACK:
+                return "PING_ACK";
+            case TRANSPORT_DGC_ACK:
+                return "DGC_ACK";
+            default:
+                return "UNKNOWN";
+        }
     }
 
     private String safeMessage(Throwable t) {
