@@ -1,0 +1,34 @@
+# Build output
+target/
+.m2repo/
+
+# IDE / editor
+.idea/
+.vscode/
+.trae/
+.codebuddy/
+
+# Local runtime state
+
+
+
+# Unpacked / historical artifacts
+yso-gui-1.5-SNAPSHOT/
+ysoserial-0.0.6-SNAPSHOT-all/
+
+# Temp / logs
+*.log
+
+
+错误.md
+文章.md
+yso.md
+
+
+内存马测试/
+src/test/
+JNDI-Injection-Exploit-Plus-2.5-SNAPSHOT-all.jar 
+lib/README.md
+lib/README_zh.md
+lib/*.jar
+*.jar

@@ -1,0 +1,186 @@
+{
+  "AspectJWeaver" : {
+    "nodes" : [ {
+      "id" : "n0",
+      "label" : "HashSet::readObject()",
+      "x" : 80.0,
+      "y" : 40.0
+    }, {
+      "id" : "n1",
+      "label" : "SimpleCache.StoreableCachingMap::put()",
+      "x" : 80.0,
+      "y" : 130.0
+    }, {
+      "id" : "n2",
+      "label" : "SimpleCache.StoreableCachingMap::writeToPath()",
+      "x" : 80.0,
+      "y" : 220.0
+    }, {
+      "id" : "n3",
+      "label" : "FileOutputStream::write(payload)",
+      "x" : 80.0,
+      "y" : 310.0
+    }, {
+      "id" : "n4",
+      "label" : "目标目录::写入恶意文件",
+      "x" : 80.0,
+      "y" : 400.0
+    } ],
+    "edges" : [ {
+      "fromId" : "n0",
+      "toId" : "n1",
+      "label" : ""
+    }, {
+      "fromId" : "n1",
+      "toId" : "n2",
+      "label" : ""
+    }, {
+      "fromId" : "n2",
+      "toId" : "n3",
+      "label" : ""
+    }, {
+      "fromId" : "n3",
+      "toId" : "n4",
+      "label" : ""
+    } ]
+  },
+  "MozillaRhino1" : {
+    "nodes" : [ {
+      "id" : "n0",
+      "label" : "BadAttributeValueExpException::readObject()",
+      "x" : 80.0,
+      "y" : 40.0
+    }, {
+      "id" : "n1",
+      "label" : "NativeObject::toString()",
+      "x" : 80.0,
+      "y" : 130.0
+    }, {
+      "id" : "n2",
+      "label" : "NativeObject::getDefaultValue()",
+      "x" : 80.0,
+      "y" : 220.0
+    }, {
+      "id" : "n3",
+      "label" : "ScriptRuntime::call()",
+      "x" : 80.0,
+      "y" : 310.0
+    }, {
+      "id" : "n4",
+      "label" : "Runtime::exec(cmd)",
+      "x" : 80.0,
+      "y" : 400.0
+    } ],
+    "edges" : [ {
+      "fromId" : "n0",
+      "toId" : "n1",
+      "label" : ""
+    }, {
+      "fromId" : "n1",
+      "toId" : "n2",
+      "label" : ""
+    }, {
+      "fromId" : "n2",
+      "toId" : "n3",
+      "label" : ""
+    }, {
+      "fromId" : "n3",
+      "toId" : "n4",
+      "label" : ""
+    } ]
+  },
+  "sads" : {
+    "nodes" : [ {
+      "id" : "n1776660728385",
+      "label" : "ClassName::method()",
+      "x" : 230.0,
+      "y" : 147.0
+    }, {
+      "id" : "n1776660730319",
+      "label" : "ClassName::method()",
+      "x" : 231.0,
+      "y" : 354.0
+    } ],
+    "edges" : [ {
+      "fromId" : "n1776660728385",
+      "toId" : "n1776660730319",
+      "label" : ""
+    } ]
+  },
+  "MyCustomChain" : {
+    "nodes" : [ ],
+    "edges" : [ ]
+  },
+  "MyCC2" : {
+    "nodes" : [ {
+      "id" : "n1776993746820",
+      "label" : "ClassName::method()",
+      "x" : 188.0,
+      "y" : 160.0
+    } ],
+    "edges" : [ ]
+  },
+  "CommonsCollections6" : {
+    "nodes" : [ {
+      "id" : "n0",
+      "label" : "HashSet::readObject()",
+      "x" : 80.0,
+      "y" : 40.0
+    }, {
+      "id" : "n1",
+      "label" : "HashMap::put()",
+      "x" : 80.0,
+      "y" : 130.0
+    }, {
+      "id" : "n2",
+      "label" : "TiedMapEntry::hashCode()",
+      "x" : 80.0,
+      "y" : 220.0
+    }, {
+      "id" : "n3",
+      "label" : "LazyMap::get()",
+      "x" : 80.0,
+      "y" : 310.0
+    }, {
+      "id" : "n4",
+      "label" : "ChainedTransformer::transform()",
+      "x" : 80.0,
+      "y" : 400.0
+    }, {
+      "id" : "n5",
+      "label" : "InvokerTransformer::transform()",
+      "x" : 80.0,
+      "y" : 490.0
+    }, {
+      "id" : "n6",
+      "label" : "Runtime::exec(cmd)",
+      "x" : 80.0,
+      "y" : 580.0
+    } ],
+    "edges" : [ {
+      "fromId" : "n0",
+      "toId" : "n1",
+      "label" : ""
+    }, {
+      "fromId" : "n1",
+      "toId" : "n2",
+      "label" : ""
+    }, {
+      "fromId" : "n2",
+      "toId" : "n3",
+      "label" : ""
+    }, {
+      "fromId" : "n3",
+      "toId" : "n4",
+      "label" : ""
+    }, {
+      "fromId" : "n4",
+      "toId" : "n5",
+      "label" : ""
+    }, {
+      "fromId" : "n5",
+      "toId" : "n6",
+      "label" : ""
+    } ]
+  }
+}

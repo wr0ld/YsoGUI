@@ -1,0 +1,9 @@
+[ {
+  "name" : "MyCC2",
+  "author" : "自定义",
+  "dependencies" : [ "org.apache.commons:commons-collections4:4.0" ],
+  "className" : null,
+  "custom" : true,
+  "customJarPath" : "payloads\\MyCC2.class",
+  "customClassName" : "MyCC2"
+} ]

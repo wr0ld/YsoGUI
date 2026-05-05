@@ -1,0 +1,27 @@
+{
+  "FilterInject" : {
+    "name" : "FilterInject",
+    "type" : "Filter",
+    "mode" : "echo",
+    "tool" : null,
+    "password" : null,
+    "secretKey" : null,
+    "triggerHeader" : "X-Cmd",
+    "requestMethod" : "GET",
+    "triggerSource" : "header",
+    "triggerName" : "X-Cmd",
+    "description" : "",
+    "classFile" : "E:\\tools\\YsoGUI\\memshells\\classes\\FilterInject.class",
+    "className" : "com.vuln.com.vuln.FilterInject",
+    "templateClass" : null,
+    "builtin" : false,
+    "serverType" : "Tomcat",
+    "triggerPath" : "/",
+    "responseMode" : "BODY_RAW",
+    "responseHeader" : "",
+    "responseStart" : "",
+    "responseEnd" : "",
+    "responseRegex" : "",
+    "verifyHint" : ""
+  }
+}

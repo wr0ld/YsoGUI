@@ -1,0 +1,344 @@
+{
+  "CommonsCollections1": {
+    "name": "CommonsCollections1",
+    "description": "利用 CommonsCollections 3.1 的 InvokerTransformer 反射调用 Runtime.exec()",
+    "memshellSupported": false,
+    "memshellReason": "该链走 Runtime.exec()，无法加载字节码",
+    "category": "CC",
+    "gadgetChain": "AnnotationInvocationHandler->ConstantTransformer->InvokerTransformer->Runtime.exec()"
+  },
+  "CommonsCollections2": {
+    "name": "CommonsCollections2",
+    "description": "利用 PriorityQueue + TransformingComparator + InvokerTransformer 调用 TemplatesImpl",
+    "memshellSupported": true,
+    "category": "CC",
+    "gadgetChain": "PriorityQueue->TransformingComparator->InvokerTransformer->TemplatesImpl"
+  },
+  "CommonsCollections3": {
+    "name": "CommonsCollections3",
+    "description": "利用 ChainedTransformer + InstantiateTransformer + TrAXFilter 加载 TemplatesImpl",
+    "memshellSupported": true,
+    "category": "CC",
+    "gadgetChain": "AnnotationInvocationHandler->ChainedTransformer->InstantiateTransformer->TrAXFilter->TemplatesImpl"
+  },
+  "CommonsCollections4": {
+    "name": "CommonsCollections4",
+    "description": "利用 PriorityQueue + ChainedTransformer + InstantiateTransformer 加载 TemplatesImpl",
+    "memshellSupported": true,
+    "category": "CC",
+    "gadgetChain": "PriorityQueue->TransformingComparator->ChainedTransformer->InstantiateTransformer->TrAXFilter->TemplatesImpl"
+  },
+  "CommonsCollections5": {
+    "name": "CommonsCollections5",
+    "description": "利用 LazyMap + TiedMapEntry + BadAttributeValueExpException 触发 toString",
+    "memshellSupported": false,
+    "memshellReason": "该链走 InvokerTransformer 反射调用 Runtime.exec()，无法加载字节码",
+    "category": "CC",
+    "gadgetChain": "BadAttributeValueExpException->TiedMapEntry->LazyMap->InvokerTransformer->Runtime.exec()"
+  },
+  "CommonsCollections6": {
+    "name": "CommonsCollections6",
+    "description": "利用 HashSet + TiedMapEntry 触发 LazyMap.get()",
+    "memshellSupported": false,
+    "memshellReason": "该链走 InvokerTransformer 反射调用 Runtime.exec()，无法加载字节码",
+    "category": "CC",
+    "gadgetChain": "HashSet->HashMap->TiedMapEntry->LazyMap->InvokerTransformer->Runtime.exec()"
+  },
+  "CommonsCollections7": {
+    "name": "CommonsCollections7",
+    "description": "利用 Hashtable + TiedMapEntry 触发 LazyMap.get()",
+    "memshellSupported": false,
+    "memshellReason": "该链走 InvokerTransformer 反射调用 Runtime.exec()，无法加载字节码",
+    "category": "CC",
+    "gadgetChain": "Hashtable->TiedMapEntry->LazyMap->InvokerTransformer->Runtime.exec()"
+  },
+  "CommonsCollections8": {
+    "name": "CommonsCollections8",
+    "description": "利用 CommonsCollections 4.0 的 TransformingComparator + InstantiateTransformer",
+    "memshellSupported": false,
+    "memshellReason": "当前 GUI 的自定义 classBytes 注入未对该链做可靠封装验证，建议改用 CommonsBeanutils1 / CommonsBeanutils192NOCC / CommonsCollections2 / CommonsCollections4。",
+    "category": "CC",
+    "gadgetChain": "PriorityQueue->TransformingComparator->InstantiateTransformer->TrAXFilter->TemplatesImpl"
+  },
+  "CommonsCollections12": {
+    "name": "CommonsCollections12",
+    "description": "利用 Hashtable + TiedMapEntry + InstantiateTransformer 加载字节码",
+    "memshellSupported": true,
+    "category": "CC",
+    "gadgetChain": "Hashtable->TiedMapEntry->LazyMap->InstantiateTransformer->TrAXFilter->TemplatesImpl"
+  },
+  "CommonsBeanutils1": {
+    "name": "CommonsBeanutils1",
+    "description": "利用 BeanComparator + TemplatesImpl 加载字节码，不依赖 CommonsCollections",
+    "memshellSupported": true,
+    "category": "CB",
+    "gadgetChain": "PriorityQueue->BeanComparator->TemplatesImpl.getOutputProperties()"
+  },
+  "CommonsBeanutils183NOCC": {
+    "name": "CommonsBeanutils183NOCC",
+    "description": "CB 1.18.3 版本，不依赖 CC，利用 BeanComparator + TemplatesImpl",
+    "memshellSupported": true,
+    "category": "CB",
+    "gadgetChain": "PriorityQueue->BeanComparator->TemplatesImpl.getOutputProperties()"
+  },
+  "CommonsBeanutils192NOCC": {
+    "name": "CommonsBeanutils192NOCC",
+    "description": "CB 1.9.2 版本，不依赖 CC，利用 BeanComparator + TemplatesImpl，通用性强",
+    "memshellSupported": true,
+    "category": "CB",
+    "gadgetChain": "PriorityQueue->BeanComparator->TemplatesImpl.getOutputProperties()"
+  },
+  "Spring1": {
+    "name": "Spring1",
+    "description": "利用 Spring 的 ObjectFactoryDelegatingInvocationHandler 触发 TemplatesImpl",
+    "memshellSupported": true,
+    "category": "Spring",
+    "gadgetChain": "ObjectFactoryDelegatingInvocationHandler->SerializableTypeWrapper->TemplatesImpl"
+  },
+  "Spring2": {
+    "name": "Spring2",
+    "description": "利用 Spring 的 JdkDynamicAopProxy 触发 TemplatesImpl",
+    "memshellSupported": true,
+    "category": "Spring",
+    "gadgetChain": "JdkDynamicAopProxy->AdvisedSupport->TemplatesImpl"
+  },
+  "URLDNS": {
+    "name": "URLDNS",
+    "description": "DNS 探测链，只能触发 DNS 请求，无法执行代码",
+    "memshellSupported": false,
+    "memshellReason": "该链仅触发 DNS 请求，无法执行任何代码",
+    "category": "Other",
+    "gadgetChain": "HashMap->URL.hashCode()->DNS请求",
+    "paramType": "DNSLOG",
+    "paramHint": "输入 DNSLog 地址，如 http://xxx.dnslog.cn"
+  },
+  "JRMPClient": {
+    "name": "JRMPClient",
+    "description": "JRMP 客户端链，使目标回连 JRMP 服务端获取 payload",
+    "memshellSupported": false,
+    "memshellReason": "该链仅触发 JRMP 回连，不能直接加载字节码",
+    "category": "Other",
+    "gadgetChain": "UnicastRef->JRMP回连",
+    "paramType": "HOSTPORT",
+    "paramHint": "输入 JRMP 服务端地址，如 127.0.0.1:1099"
+  },
+  "JRMPListener": {
+    "name": "JRMPListener",
+    "description": "JRMP 服务端链，用于等待目标回连并在二阶段投递 payload",
+    "memshellSupported": false,
+    "memshellReason": "该链用于 JRMP 监听与二阶段投递，不直接加载字节码",
+    "category": "Other",
+    "gadgetChain": "UnicastRef->JRMP回连->二阶段反序列化",
+    "paramType": "HOSTPORT",
+    "paramHint": "输入 JRMP 监听地址，如 127.0.0.1:1099"
+  },
+  "Jdk7u21": {
+    "name": "Jdk7u21",
+    "description": "利用 JDK 7u21 之前的 AnnotationInvocationHandler 漏洞触发 TemplatesImpl",
+    "memshellSupported": true,
+    "category": "Other",
+    "gadgetChain": "LinkedHashSet->AnnotationInvocationHandler->TemplatesImpl"
+  },
+  "Groovy1": {
+    "name": "Groovy1",
+    "description": "利用 Groovy 的 ConvertedClosure 触发 TemplatesImpl",
+    "memshellSupported": true,
+    "category": "Other",
+    "gadgetChain": "ConvertedClosure->MethodClosure->TemplatesImpl"
+  },
+  "AspectJWeaver": {
+    "name": "AspectJWeaver",
+    "description": "利用 AspectJWeaver 的 SimpleCache 触发文件写入",
+    "memshellSupported": false,
+    "memshellReason": "该链走文件写入，无法加载字节码",
+    "category": "Other",
+    "gadgetChain": "SimpleCache->文件写入"
+  },
+  "C3P0": {
+    "name": "C3P0",
+    "description": "利用 C3P0 的 JNDI 或 HexAsciiSerializedMap 触发反序列化",
+    "memshellSupported": false,
+    "memshellReason": "C3P0 链走 JNDI 引用或二次反序列化，不支持直接注入字节码",
+    "category": "Other",
+    "gadgetChain": "Referenceable->JNDI引用",
+    "paramType": "JNDI",
+    "paramHint": "输入 JNDI/LDAP 地址，如 ldap://host:port/obj"
+  },
+  "Jython1": {
+    "name": "Jython1",
+    "description": "利用 Jython 的 PyObject 触发代码执行",
+    "memshellSupported": false,
+    "memshellReason": "该链走 Python 执行，无法加载 Java 字节码",
+    "category": "Other",
+    "gadgetChain": "PyObject->Python代码执行"
+  },
+  "Hibernate1": {
+    "name": "Hibernate1",
+    "description": "利用 Hibernate 的 ComponentType 触发 TemplatesImpl",
+    "memshellSupported": true,
+    "category": "Other",
+    "gadgetChain": "ComponentType->TemplatesImpl"
+  },
+  "Hibernate2": {
+    "name": "Hibernate2",
+    "description": "利用 Hibernate 的 ComponentType 触发 TemplatesImpl（变体）",
+    "memshellSupported": true,
+    "category": "Other",
+    "gadgetChain": "ComponentType->TemplatesImpl"
+  },
+  "Clojure": {
+    "name": "Clojure",
+    "description": "利用 Clojure 的 AbstractTableModel$Printf 触发代码执行",
+    "memshellSupported": false,
+    "memshellReason": "该链走 Clojure 表达式执行，无法加载 Java 字节码",
+    "category": "Other",
+    "gadgetChain": "AbstractTableModel$Printf->Clojure表达式执行"
+  },
+  "BeanShell1": {
+    "name": "BeanShell1",
+    "description": "利用 BeanShell 的 XThis 触发代码执行",
+    "memshellSupported": false,
+    "memshellReason": "该链走 BeanShell 脚本执行，无法加载 Java 字节码",
+    "category": "Other",
+    "gadgetChain": "XThis->BeanShell脚本执行"
+  },
+  "Vaadin1": {
+    "name": "Vaadin1",
+    "description": "利用 Vaadin 的 NestedMethodProperty 触发代码执行",
+    "memshellSupported": false,
+    "memshellReason": "该链走反射调用，无法直接加载字节码",
+    "category": "Other",
+    "gadgetChain": "NestedMethodProperty->反射调用"
+  },
+  "Wicket1": {
+    "name": "Wicket1",
+    "description": "利用 Wicket 的 ObjectStreamDeserializer 触发反序列化",
+    "memshellSupported": false,
+    "memshellReason": "该链仅为反序列化入口，需配合其他链使用",
+    "category": "Other",
+    "gadgetChain": "ObjectStreamDeserializer->二次反序列化"
+  },
+  "Fastjson1": {
+    "name": "Fastjson1",
+    "description": "利用 Fastjson1.x 的 JSONObject.toString() 触发 TemplatesImpl.getOutputProperties()",
+    "memshellSupported": true,
+    "category": "Fastjson",
+    "gadgetChain": "BadAttributeValueExpException->JSONObject.toString()->TemplatesImpl.getOutputProperties()"
+  },
+  "Fastjson2": {
+    "name": "Fastjson2",
+    "description": "利用 Fastjson2.x 的 JSONObject.toString() 触发 TemplatesImpl.getOutputProperties()",
+    "memshellSupported": true,
+    "category": "Fastjson",
+    "gadgetChain": "BadAttributeValueExpException->JSONObject.toString()->TemplatesImpl.getOutputProperties()"
+  },
+  "Click1": {
+    "name": "Click1",
+    "description": "利用 Apache Click 的 PropertyUtils$BeanProperty.hashCode() 触发 TemplatesImpl",
+    "memshellSupported": true,
+    "category": "Other",
+    "gadgetChain": "HashMap->PropertyUtils$BeanProperty->TemplatesImpl.getOutputProperties()"
+  },
+  "Ceylon": {
+    "name": "Ceylon",
+    "description": "利用 Ceylon 语言的 String.hashCode() 触发 TemplatesImpl",
+    "memshellSupported": true,
+    "category": "Other",
+    "gadgetChain": "HashMap->ceylon.language.String->TemplatesImpl.getOutputProperties()"
+  },
+  "Jackson1": {
+    "name": "Jackson1",
+    "description": "利用 Jackson 的 POJOPropertyBuilder.hashCode() 触发 TemplatesImpl",
+    "memshellSupported": true,
+    "category": "Other",
+    "gadgetChain": "HashMap->POJOPropertyBuilder->TemplatesImpl.getOutputProperties()"
+  },
+  "Jackson2": {
+    "name": "Jackson2",
+    "description": "利用 Jackson 的 POJOPropertyBuilder.hashCode() 反射调用 Runtime.exec()",
+    "memshellSupported": false,
+    "memshellReason": "该链走反射调用 Runtime.exec()，无法加载字节码",
+    "category": "Other",
+    "gadgetChain": "HashMap->POJOPropertyBuilder->Runtime.exec()"
+  },
+  "JavassistWeld1": {
+    "name": "JavassistWeld1",
+    "description": "利用 Javassist+Weld 的 BeanDeploymentArchiveImpl.hashCode() 触发 TemplatesImpl",
+    "memshellSupported": true,
+    "category": "Other",
+    "gadgetChain": "HashMap->BeanDeploymentArchiveImpl->TemplatesImpl.newTransformer()"
+  },
+  "JBossInterceptors1": {
+    "name": "JBossInterceptors1",
+    "description": "利用 JBoss Interceptors 的 ClassProxyMethodHandler.hashCode() 触发 TemplatesImpl",
+    "memshellSupported": true,
+    "category": "Other",
+    "gadgetChain": "HashMap->ClassProxyMethodHandler->TemplatesImpl.newTransformer()"
+  },
+  "JSON1": {
+    "name": "JSON1",
+    "description": "利用 NetSF JSON 的 JSONObject.hashCode() 触发 TemplatesImpl",
+    "memshellSupported": true,
+    "category": "Other",
+    "gadgetChain": "HashMap->JSONObject.hashCode()->TemplatesImpl.getOutputProperties()"
+  },
+  "MozillaRhino1": {
+    "name": "MozillaRhino1",
+    "description": "利用 Mozilla Rhino 的 NativeObject.toString() 触发 JavaScript 执行",
+    "memshellSupported": false,
+    "memshellReason": "该链走 JavaScript 执行，无法加载 Java 字节码",
+    "category": "Other",
+    "gadgetChain": "BadAttributeValueExpException->NativeObject->JavaScript执行"
+  },
+  "MozillaRhino2": {
+    "name": "MozillaRhino2",
+    "description": "利用 Mozilla Rhino 的 NativeObject.toString() 触发 TemplatesImpl",
+    "memshellSupported": true,
+    "category": "Other",
+    "gadgetChain": "BadAttributeValueExpException->NativeObject->TemplatesImpl.newTransformer()"
+  },
+  "Myfaces1": {
+    "name": "Myfaces1",
+    "description": "利用 MyFaces 的 UIComponentBase$AdapterFactory 触发 EL 表达式执行",
+    "memshellSupported": false,
+    "memshellReason": "该链走 EL 表达式执行命令，无法加载字节码",
+    "category": "Other",
+    "gadgetChain": "HashMap->UIComponentBase$AdapterFactory->ValueExpression->Runtime.exec()"
+  },
+  "Myfaces2": {
+    "name": "Myfaces2",
+    "description": "利用 MyFaces 的 UIComponentBase$AdapterFactory 触发 TemplatesImpl",
+    "memshellSupported": true,
+    "category": "Other",
+    "gadgetChain": "HashMap->UIComponentBase$AdapterFactory->TemplatesImpl.newTransformer()"
+  },
+  "ROME": {
+    "name": "ROME",
+    "description": "利用 ROME 的 ObjectBean.hashCode() 触发 TemplatesImpl",
+    "memshellSupported": true,
+    "category": "Other",
+    "gadgetChain": "HashMap->ObjectBean->EqualsBean->TemplatesImpl.getOutputProperties()"
+  },
+  "FileUpload1": {
+    "name": "FileUpload1",
+    "description": "利用 Commons FileUpload 的 DiskFileItem 实现文件写入",
+    "memshellSupported": false,
+    "memshellReason": "该链走文件写入，无法加载字节码",
+    "category": "Other",
+    "gadgetChain": "DiskFileItem->DeferredFileOutputStream->文件写入"
+  },
+  "Jython2": {
+    "name": "Jython2",
+    "description": "利用 Jython 的 PyObject 触发 TemplatesImpl 加载字节码",
+    "memshellSupported": true,
+    "category": "Other",
+    "gadgetChain": "PySystemState->PyObject->TemplatesImpl.newTransformer()"
+  },
+  "CommonsBeanutils192WithDualTreeBidiMap": {
+    "name": "CommonsBeanutils192WithDualTreeBidiMap",
+    "description": "CB 1.9.2 版本，使用 DualTreeBidiMap 触发，不依赖 CC",
+    "memshellSupported": true,
+    "category": "CB",
+    "gadgetChain": "DualTreeBidiMap->BeanComparator->TemplatesImpl.getOutputProperties()"
+  }
+}

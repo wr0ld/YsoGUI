@@ -1,0 +1,3303 @@
+{
+  "AspectJWeaver": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "HashSet::readObject()",
+        "x": 80.0,
+        "y": 40.0
+      },
+      {
+        "id": "n1",
+        "label": "SimpleCache.StoreableCachingMap::put()",
+        "x": 80.0,
+        "y": 130.0
+      },
+      {
+        "id": "n2",
+        "label": "SimpleCache.StoreableCachingMap::writeToPath()",
+        "x": 80.0,
+        "y": 220.0
+      },
+      {
+        "id": "n3",
+        "label": "FileOutputStream::write(payload)",
+        "x": 80.0,
+        "y": 310.0
+      },
+      {
+        "id": "n4",
+        "label": "目标目录::写入恶意文件",
+        "x": 80.0,
+        "y": 400.0
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      }
+    ]
+  },
+  "C3P0": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "PoolBackedDataSourceBase::readObject()",
+        "x": 80.0,
+        "y": 40.0
+      },
+      {
+        "id": "n1",
+        "label": "ReferenceIndirector.ReferenceSerialized::getObject()",
+        "x": 80.0,
+        "y": 130.0
+      },
+      {
+        "id": "n2",
+        "label": "ReferenceableUtils::referenceToObject()",
+        "x": 80.0,
+        "y": 220.0
+      },
+      {
+        "id": "n3",
+        "label": "URLClassLoader::loadClass(remoteURL)",
+        "x": 80.0,
+        "y": 310.0
+      },
+      {
+        "id": "n4",
+        "label": "RemoteClass::执行恶意代码",
+        "x": 80.0,
+        "y": 400.0
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      }
+    ]
+  },
+  "Clojure": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "proxy$AbstractTableModel::hashCode()",
+        "x": 80.0,
+        "y": 40.0
+      },
+      {
+        "id": "n1",
+        "label": "clojure.core$comp.invoke()",
+        "x": 80.0,
+        "y": 130.0
+      },
+      {
+        "id": "n2",
+        "label": "clojure.lang.AFn::applyToHelper()",
+        "x": 80.0,
+        "y": 220.0
+      },
+      {
+        "id": "n3",
+        "label": "Runtime::exec(cmd)",
+        "x": 80.0,
+        "y": 310.0
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      }
+    ]
+  },
+  "CommonsBeanutils1": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "PriorityQueue::readObject()",
+        "x": 80.0,
+        "y": 40.0
+      },
+      {
+        "id": "n1",
+        "label": "PriorityQueue::heapify()",
+        "x": 80.0,
+        "y": 130.0
+      },
+      {
+        "id": "n2",
+        "label": "BeanComparator::compare()",
+        "x": 80.0,
+        "y": 220.0
+      },
+      {
+        "id": "n3",
+        "label": "PropertyUtils::getProperty()",
+        "x": 80.0,
+        "y": 310.0
+      },
+      {
+        "id": "n4",
+        "label": "TemplatesImpl::getOutputProperties()",
+        "x": 80.0,
+        "y": 400.0
+      },
+      {
+        "id": "n5",
+        "label": "TemplatesImpl::newTransformer()",
+        "x": 80.0,
+        "y": 490.0
+      },
+      {
+        "id": "n6",
+        "label": "TemplatesImpl::getTransletInstance()",
+        "x": 80.0,
+        "y": 580.0
+      },
+      {
+        "id": "n7",
+        "label": "BytecodeClass::执行恶意类",
+        "x": 80.0,
+        "y": 670.0
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      },
+      {
+        "fromId": "n5",
+        "toId": "n6",
+        "label": ""
+      },
+      {
+        "fromId": "n6",
+        "toId": "n7",
+        "label": ""
+      }
+    ]
+  },
+  "CommonsBeanutils183NOCC": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "PriorityQueue::readObject()",
+        "x": 80.0,
+        "y": 40.0
+      },
+      {
+        "id": "n1",
+        "label": "PriorityQueue::heapify()",
+        "x": 80.0,
+        "y": 130.0
+      },
+      {
+        "id": "n2",
+        "label": "BeanComparator::compare()  [无CC依赖]",
+        "x": 80.0,
+        "y": 220.0
+      },
+      {
+        "id": "n3",
+        "label": "PropertyUtils::getProperty()",
+        "x": 80.0,
+        "y": 310.0
+      },
+      {
+        "id": "n4",
+        "label": "TemplatesImpl::getOutputProperties()",
+        "x": 80.0,
+        "y": 400.0
+      },
+      {
+        "id": "n5",
+        "label": "TemplatesImpl::newTransformer()",
+        "x": 80.0,
+        "y": 490.0
+      },
+      {
+        "id": "n6",
+        "label": "BytecodeClass::执行恶意类",
+        "x": 80.0,
+        "y": 580.0
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      },
+      {
+        "fromId": "n5",
+        "toId": "n6",
+        "label": ""
+      }
+    ]
+  },
+  "CommonsBeanutils192NOCC": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "PriorityQueue::readObject()",
+        "x": 80.0,
+        "y": 40.0
+      },
+      {
+        "id": "n1",
+        "label": "PriorityQueue::heapify()",
+        "x": 80.0,
+        "y": 130.0
+      },
+      {
+        "id": "n2",
+        "label": "BeanComparator::compare()  [无CC依赖]",
+        "x": 80.0,
+        "y": 220.0
+      },
+      {
+        "id": "n3",
+        "label": "PropertyUtils::getProperty()",
+        "x": 80.0,
+        "y": 310.0
+      },
+      {
+        "id": "n4",
+        "label": "TemplatesImpl::getOutputProperties()",
+        "x": 80.0,
+        "y": 400.0
+      },
+      {
+        "id": "n5",
+        "label": "TemplatesImpl::newTransformer()",
+        "x": 80.0,
+        "y": 490.0
+      },
+      {
+        "id": "n6",
+        "label": "BytecodeClass::执行恶意类",
+        "x": 80.0,
+        "y": 580.0
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      },
+      {
+        "fromId": "n5",
+        "toId": "n6",
+        "label": ""
+      }
+    ]
+  },
+  "CommonsBeanutils192WithDualTreeBidiMap": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "PriorityQueue::readObject()",
+        "x": 80.0,
+        "y": 40.0
+      },
+      {
+        "id": "n1",
+        "label": "PriorityQueue::heapify()",
+        "x": 80.0,
+        "y": 130.0
+      },
+      {
+        "id": "n2",
+        "label": "BeanComparator::compare()  [无CC依赖]",
+        "x": 80.0,
+        "y": 220.0
+      },
+      {
+        "id": "n3",
+        "label": "PropertyUtils::getProperty()",
+        "x": 80.0,
+        "y": 310.0
+      },
+      {
+        "id": "n4",
+        "label": "TemplatesImpl::getOutputProperties()",
+        "x": 80.0,
+        "y": 400.0
+      },
+      {
+        "id": "n5",
+        "label": "TemplatesImpl::newTransformer()",
+        "x": 80.0,
+        "y": 490.0
+      },
+      {
+        "id": "n6",
+        "label": "BytecodeClass::执行恶意类",
+        "x": 80.0,
+        "y": 580.0
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      },
+      {
+        "fromId": "n5",
+        "toId": "n6",
+        "label": ""
+      }
+    ]
+  },
+  "CommonsCollections1": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "AnnotationInvocationHandler::readObject()",
+        "x": 80.0,
+        "y": 40.0
+      },
+      {
+        "id": "n1",
+        "label": "Map(Proxy)::entrySet()",
+        "x": 80.0,
+        "y": 130.0
+      },
+      {
+        "id": "n2",
+        "label": "AnnotationInvocationHandler::invoke()",
+        "x": 80.0,
+        "y": 220.0
+      },
+      {
+        "id": "n3",
+        "label": "LazyMap::get()",
+        "x": 80.0,
+        "y": 310.0
+      },
+      {
+        "id": "n4",
+        "label": "ChainedTransformer::transform()",
+        "x": 80.0,
+        "y": 400.0
+      },
+      {
+        "id": "n5",
+        "label": "ConstantTransformer::transform()",
+        "x": 80.0,
+        "y": 490.0
+      },
+      {
+        "id": "n6",
+        "label": "InvokerTransformer::transform()",
+        "x": 80.0,
+        "y": 580.0
+      },
+      {
+        "id": "n7",
+        "label": "Runtime::exec(cmd)",
+        "x": 80.0,
+        "y": 670.0
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      },
+      {
+        "fromId": "n5",
+        "toId": "n6",
+        "label": ""
+      },
+      {
+        "fromId": "n6",
+        "toId": "n7",
+        "label": ""
+      }
+    ]
+  },
+  "CommonsCollections12": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "AnnotationInvocationHandler::readObject()",
+        "x": 80.0,
+        "y": 40.0
+      },
+      {
+        "id": "n1",
+        "label": "LazyMap::entrySet()",
+        "x": 80.0,
+        "y": 130.0
+      },
+      {
+        "id": "n2",
+        "label": "LazyMap::get()",
+        "x": 80.0,
+        "y": 220.0
+      },
+      {
+        "id": "n3",
+        "label": "ChainedTransformer::transform()",
+        "x": 80.0,
+        "y": 310.0
+      },
+      {
+        "id": "n4",
+        "label": "InvokerTransformer::transform()",
+        "x": 80.0,
+        "y": 400.0
+      },
+      {
+        "id": "n5",
+        "label": "Runtime::exec(cmd)",
+        "x": 80.0,
+        "y": 490.0
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      }
+    ]
+  },
+  "CommonsCollections2": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "PriorityQueue::readObject()",
+        "x": 80.0,
+        "y": 40.0
+      },
+      {
+        "id": "n1",
+        "label": "PriorityQueue::heapify()",
+        "x": 80.0,
+        "y": 130.0
+      },
+      {
+        "id": "n2",
+        "label": "PriorityQueue::siftDownUsingComparator()",
+        "x": 80.0,
+        "y": 220.0
+      },
+      {
+        "id": "n3",
+        "label": "TransformingComparator::compare()",
+        "x": 80.0,
+        "y": 310.0
+      },
+      {
+        "id": "n4",
+        "label": "InvokerTransformer::transform()",
+        "x": 80.0,
+        "y": 400.0
+      },
+      {
+        "id": "n5",
+        "label": "TemplatesImpl::newTransformer()",
+        "x": 80.0,
+        "y": 490.0
+      },
+      {
+        "id": "n6",
+        "label": "TemplatesImpl::getTransletInstance()",
+        "x": 80.0,
+        "y": 580.0
+      },
+      {
+        "id": "n7",
+        "label": "BytecodeClass::<clinit>()",
+        "x": 80.0,
+        "y": 670.0
+      },
+      {
+        "id": "n8",
+        "label": "Runtime::exec(cmd)",
+        "x": 80.0,
+        "y": 760.0
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      },
+      {
+        "fromId": "n5",
+        "toId": "n6",
+        "label": ""
+      },
+      {
+        "fromId": "n6",
+        "toId": "n7",
+        "label": ""
+      },
+      {
+        "fromId": "n7",
+        "toId": "n8",
+        "label": ""
+      }
+    ]
+  },
+  "CommonsCollections3": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "AnnotationInvocationHandler::readObject()",
+        "x": 80.0,
+        "y": 40.0
+      },
+      {
+        "id": "n1",
+        "label": "Map(Proxy)::entrySet()",
+        "x": 80.0,
+        "y": 130.0
+      },
+      {
+        "id": "n2",
+        "label": "AnnotationInvocationHandler::invoke()",
+        "x": 80.0,
+        "y": 220.0
+      },
+      {
+        "id": "n3",
+        "label": "LazyMap::get()",
+        "x": 80.0,
+        "y": 310.0
+      },
+      {
+        "id": "n4",
+        "label": "ChainedTransformer::transform()",
+        "x": 80.0,
+        "y": 400.0
+      },
+      {
+        "id": "n5",
+        "label": "ConstantTransformer::transform(TrAXFilter.class)",
+        "x": 80.0,
+        "y": 490.0
+      },
+      {
+        "id": "n6",
+        "label": "InstantiateTransformer::transform(new TrAXFilter(TemplatesImpl))",
+        "x": 80.0,
+        "y": 580.0
+      },
+      {
+        "id": "n7",
+        "label": "TrAXFilter::<init>(Templates)",
+        "x": 80.0,
+        "y": 670.0
+      },
+      {
+        "id": "n8",
+        "label": "TemplatesImpl::newTransformer()",
+        "x": 80.0,
+        "y": 760.0
+      },
+      {
+        "id": "n9",
+        "label": "BytecodeClass::执行恶意类",
+        "x": 80.0,
+        "y": 850.0
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      },
+      {
+        "fromId": "n5",
+        "toId": "n6",
+        "label": ""
+      },
+      {
+        "fromId": "n6",
+        "toId": "n7",
+        "label": ""
+      },
+      {
+        "fromId": "n7",
+        "toId": "n8",
+        "label": ""
+      },
+      {
+        "fromId": "n8",
+        "toId": "n9",
+        "label": ""
+      }
+    ]
+  },
+  "CommonsCollections4": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "PriorityQueue::readObject()",
+        "x": 80.0,
+        "y": 40.0
+      },
+      {
+        "id": "n1",
+        "label": "PriorityQueue::heapify()",
+        "x": 80.0,
+        "y": 130.0
+      },
+      {
+        "id": "n2",
+        "label": "PriorityQueue::siftDownUsingComparator()",
+        "x": 80.0,
+        "y": 220.0
+      },
+      {
+        "id": "n3",
+        "label": "TransformingComparator::compare()",
+        "x": 80.0,
+        "y": 310.0
+      },
+      {
+        "id": "n4",
+        "label": "ChainedTransformer::transform()",
+        "x": 80.0,
+        "y": 400.0
+      },
+      {
+        "id": "n5",
+        "label": "ConstantTransformer::transform(TrAXFilter.class)",
+        "x": 80.0,
+        "y": 490.0
+      },
+      {
+        "id": "n6",
+        "label": "InstantiateTransformer::transform(new TrAXFilter(TemplatesImpl))",
+        "x": 80.0,
+        "y": 580.0
+      },
+      {
+        "id": "n7",
+        "label": "TrAXFilter::<init>(Templates)",
+        "x": 80.0,
+        "y": 670.0
+      },
+      {
+        "id": "n8",
+        "label": "TemplatesImpl::newTransformer()",
+        "x": 80.0,
+        "y": 760.0
+      },
+      {
+        "id": "n9",
+        "label": "BytecodeClass::执行恶意类",
+        "x": 80.0,
+        "y": 850.0
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      },
+      {
+        "fromId": "n5",
+        "toId": "n6",
+        "label": ""
+      },
+      {
+        "fromId": "n6",
+        "toId": "n7",
+        "label": ""
+      },
+      {
+        "fromId": "n7",
+        "toId": "n8",
+        "label": ""
+      },
+      {
+        "fromId": "n8",
+        "toId": "n9",
+        "label": ""
+      }
+    ]
+  },
+  "CommonsCollections5": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "BadAttributeValueExpException::readObject()",
+        "x": 80.0,
+        "y": 40.0
+      },
+      {
+        "id": "n1",
+        "label": "TiedMapEntry::toString()",
+        "x": 80.0,
+        "y": 130.0
+      },
+      {
+        "id": "n2",
+        "label": "LazyMap::get()",
+        "x": 80.0,
+        "y": 220.0
+      },
+      {
+        "id": "n3",
+        "label": "ChainedTransformer::transform()",
+        "x": 80.0,
+        "y": 310.0
+      },
+      {
+        "id": "n4",
+        "label": "InvokerTransformer::transform()",
+        "x": 80.0,
+        "y": 400.0
+      },
+      {
+        "id": "n5",
+        "label": "Runtime::exec(cmd)",
+        "x": 80.0,
+        "y": 490.0
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      }
+    ]
+  },
+  "CommonsCollections6": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "HashSet::readObject()",
+        "x": 80.0,
+        "y": 40.0
+      },
+      {
+        "id": "n1",
+        "label": "HashMap::put()",
+        "x": 80.0,
+        "y": 130.0
+      },
+      {
+        "id": "n2",
+        "label": "TiedMapEntry::hashCode()",
+        "x": 80.0,
+        "y": 220.0
+      },
+      {
+        "id": "n3",
+        "label": "LazyMap::get()",
+        "x": 80.0,
+        "y": 310.0
+      },
+      {
+        "id": "n4",
+        "label": "ChainedTransformer::transform()",
+        "x": 80.0,
+        "y": 400.0
+      },
+      {
+        "id": "n5",
+        "label": "InvokerTransformer::transform()",
+        "x": 80.0,
+        "y": 490.0
+      },
+      {
+        "id": "n6",
+        "label": "Runtime::exec(cmd)",
+        "x": 80.0,
+        "y": 580.0
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      },
+      {
+        "fromId": "n5",
+        "toId": "n6",
+        "label": ""
+      }
+    ]
+  },
+  "CommonsCollections7": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "Hashtable::readObject()",
+        "x": 80.0,
+        "y": 40.0
+      },
+      {
+        "id": "n1",
+        "label": "Hashtable::reconstitutionPut()",
+        "x": 80.0,
+        "y": 130.0
+      },
+      {
+        "id": "n2",
+        "label": "LazyMap::equals()",
+        "x": 80.0,
+        "y": 220.0
+      },
+      {
+        "id": "n3",
+        "label": "AbstractMap::equals()",
+        "x": 80.0,
+        "y": 310.0
+      },
+      {
+        "id": "n4",
+        "label": "LazyMap::get()",
+        "x": 80.0,
+        "y": 400.0
+      },
+      {
+        "id": "n5",
+        "label": "ChainedTransformer::transform()",
+        "x": 80.0,
+        "y": 490.0
+      },
+      {
+        "id": "n6",
+        "label": "InvokerTransformer::transform()",
+        "x": 80.0,
+        "y": 580.0
+      },
+      {
+        "id": "n7",
+        "label": "Runtime::exec(cmd)",
+        "x": 80.0,
+        "y": 670.0
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      },
+      {
+        "fromId": "n5",
+        "toId": "n6",
+        "label": ""
+      },
+      {
+        "fromId": "n6",
+        "toId": "n7",
+        "label": ""
+      }
+    ]
+  },
+  "Groovy1": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "ConvertedClosure::readObject()",
+        "x": 80.0,
+        "y": 40.0
+      },
+      {
+        "id": "n1",
+        "label": "ConversionHandler::invoke()",
+        "x": 80.0,
+        "y": 130.0
+      },
+      {
+        "id": "n2",
+        "label": "MethodClosure::call()",
+        "x": 80.0,
+        "y": 220.0
+      },
+      {
+        "id": "n3",
+        "label": "ProcessGroovyMethods::execute()",
+        "x": 80.0,
+        "y": 310.0
+      },
+      {
+        "id": "n4",
+        "label": "Runtime::exec(cmd)",
+        "x": 80.0,
+        "y": 400.0
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      }
+    ]
+  },
+  "JRMPClient": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "UnicastRef::readExternal()",
+        "x": 80.0,
+        "y": 40.0
+      },
+      {
+        "id": "n1",
+        "label": "LiveRef::read()",
+        "x": 80.0,
+        "y": 130.0
+      },
+      {
+        "id": "n2",
+        "label": "TCPEndpoint (RMI Registry)",
+        "x": 80.0,
+        "y": 220.0
+      },
+      {
+        "id": "n3",
+        "label": "RemoteObject::readObject()",
+        "x": 80.0,
+        "y": 310.0
+      },
+      {
+        "id": "n4",
+        "label": "→ 触发目标 RMI/JNDI 连接",
+        "x": 80.0,
+        "y": 400.0
+      },
+      {
+        "id": "n5",
+        "label": "→ 二次反序列化 / JNDI注入",
+        "x": 80.0,
+        "y": 490.0
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      }
+    ]
+  },
+  "JRMPListener": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "UnicastRef::readExternal()",
+        "x": 80.0,
+        "y": 40.0
+      },
+      {
+        "id": "n1",
+        "label": "LiveRef::read()",
+        "x": 80.0,
+        "y": 130.0
+      },
+      {
+        "id": "n2",
+        "label": "TCPEndpoint (RMI Registry)",
+        "x": 80.0,
+        "y": 220.0
+      },
+      {
+        "id": "n3",
+        "label": "RemoteObject::readObject()",
+        "x": 80.0,
+        "y": 310.0
+      },
+      {
+        "id": "n4",
+        "label": "→ 触发目标 RMI/JNDI 连接",
+        "x": 80.0,
+        "y": 400.0
+      },
+      {
+        "id": "n5",
+        "label": "→ 二次反序列化 / JNDI注入",
+        "x": 80.0,
+        "y": 490.0
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      }
+    ]
+  },
+  "Spring1": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "SerializableTypeWrapper$MethodInvokeTypeProvider::readObject()",
+        "x": 80.0,
+        "y": 40.0
+      },
+      {
+        "id": "n1",
+        "label": "ReflectionUtils::invokeMethod()",
+        "x": 80.0,
+        "y": 130.0
+      },
+      {
+        "id": "n2",
+        "label": "Templates(Proxy)::newTransformer()",
+        "x": 80.0,
+        "y": 220.0
+      },
+      {
+        "id": "n3",
+        "label": "AnnotationInvocationHandler::invoke()",
+        "x": 80.0,
+        "y": 310.0
+      },
+      {
+        "id": "n4",
+        "label": "TemplatesImpl::newTransformer()",
+        "x": 80.0,
+        "y": 400.0
+      },
+      {
+        "id": "n5",
+        "label": "BytecodeClass::执行恶意类",
+        "x": 80.0,
+        "y": 490.0
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      }
+    ]
+  },
+  "Spring2": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "MethodInvokeTypeProvider::readObject()",
+        "x": 80.0,
+        "y": 40.0
+      },
+      {
+        "id": "n1",
+        "label": "ObjectFactoryDelegatingInvocationHandler::invoke()",
+        "x": 80.0,
+        "y": 130.0
+      },
+      {
+        "id": "n2",
+        "label": "BeanFactory::getBean()",
+        "x": 80.0,
+        "y": 220.0
+      },
+      {
+        "id": "n3",
+        "label": "TemplatesImpl::newTransformer()",
+        "x": 80.0,
+        "y": 310.0
+      },
+      {
+        "id": "n4",
+        "label": "BytecodeClass::执行恶意类",
+        "x": 80.0,
+        "y": 400.0
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      }
+    ]
+  },
+  "URLDNS": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "HashMap::readObject()",
+        "x": 80.0,
+        "y": 40.0
+      },
+      {
+        "id": "n1",
+        "label": "HashMap::hash()",
+        "x": 80.0,
+        "y": 130.0
+      },
+      {
+        "id": "n2",
+        "label": "URL::hashCode()",
+        "x": 80.0,
+        "y": 220.0
+      },
+      {
+        "id": "n3",
+        "label": "URLStreamHandler::hashCode()",
+        "x": 80.0,
+        "y": 310.0
+      },
+      {
+        "id": "n4",
+        "label": "URLStreamHandler::getHostAddress()",
+        "x": 80.0,
+        "y": 400.0
+      },
+      {
+        "id": "n5",
+        "label": "InetAddress::getByName()  [DNS查询触发]",
+        "x": 80.0,
+        "y": 490.0
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      }
+    ]
+  },
+  "BeanShell1": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "PriorityQueue::readObject()",
+        "x": 80,
+        "y": 40
+      },
+      {
+        "id": "n1",
+        "label": "PriorityQueue::heapify()",
+        "x": 80,
+        "y": 130
+      },
+      {
+        "id": "n2",
+        "label": "XThis$Handler::invoke()",
+        "x": 80,
+        "y": 220
+      },
+      {
+        "id": "n3",
+        "label": "XThis::invokeMethod()",
+        "x": 80,
+        "y": 310
+      },
+      {
+        "id": "n4",
+        "label": "BshMethod::invoke()",
+        "x": 80,
+        "y": 400
+      },
+      {
+        "id": "n5",
+        "label": "Interpreter::eval()",
+        "x": 80,
+        "y": 490
+      },
+      {
+        "id": "n6",
+        "label": "Runtime::exec(cmd)",
+        "x": 80,
+        "y": 580
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      },
+      {
+        "fromId": "n5",
+        "toId": "n6",
+        "label": ""
+      }
+    ]
+  },
+  "Ceylon": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "HashMap::readObject()",
+        "x": 80,
+        "y": 40
+      },
+      {
+        "id": "n1",
+        "label": "HashMap::hash()",
+        "x": 80,
+        "y": 130
+      },
+      {
+        "id": "n2",
+        "label": "ceylon.language.String::hashCode()",
+        "x": 80,
+        "y": 220
+      },
+      {
+        "id": "n3",
+        "label": "Util::hashCode()",
+        "x": 80,
+        "y": 310
+      },
+      {
+        "id": "n4",
+        "label": "TemplatesImpl::getOutputProperties()",
+        "x": 80,
+        "y": 400
+      },
+      {
+        "id": "n5",
+        "label": "BytecodeClass::执行恶意类",
+        "x": 80,
+        "y": 490
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      }
+    ]
+  },
+  "Click1": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "HashMap::readObject()",
+        "x": 80,
+        "y": 40
+      },
+      {
+        "id": "n1",
+        "label": "HashMap::hash()",
+        "x": 80,
+        "y": 130
+      },
+      {
+        "id": "n2",
+        "label": "PropertyUtils$BeanProperty::hashCode()",
+        "x": 80,
+        "y": 220
+      },
+      {
+        "id": "n3",
+        "label": "PropertyUtils$BeanProperty::getValue()",
+        "x": 80,
+        "y": 310
+      },
+      {
+        "id": "n4",
+        "label": "TemplatesImpl::getOutputProperties()",
+        "x": 80,
+        "y": 400
+      },
+      {
+        "id": "n5",
+        "label": "BytecodeClass::执行恶意类",
+        "x": 80,
+        "y": 490
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      }
+    ]
+  },
+  "CommonsCollections8": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "Hashtable::readObject()",
+        "x": 80,
+        "y": 40
+      },
+      {
+        "id": "n1",
+        "label": "Hashtable::reconstitutionPut()",
+        "x": 80,
+        "y": 130
+      },
+      {
+        "id": "n2",
+        "label": "TiedMapEntry::hashCode() [CC4]",
+        "x": 80,
+        "y": 220
+      },
+      {
+        "id": "n3",
+        "label": "TiedMapEntry::getValue()",
+        "x": 80,
+        "y": 310
+      },
+      {
+        "id": "n4",
+        "label": "LazyMap::get()",
+        "x": 80,
+        "y": 400
+      },
+      {
+        "id": "n5",
+        "label": "ChainedTransformer::transform()",
+        "x": 80,
+        "y": 490
+      },
+      {
+        "id": "n6",
+        "label": "InvokerTransformer::transform()",
+        "x": 80,
+        "y": 580
+      },
+      {
+        "id": "n7",
+        "label": "Runtime::exec(cmd)",
+        "x": 80,
+        "y": 670
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      },
+      {
+        "fromId": "n5",
+        "toId": "n6",
+        "label": ""
+      },
+      {
+        "fromId": "n6",
+        "toId": "n7",
+        "label": ""
+      }
+    ]
+  },
+  "Fastjson1": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "BadAttributeValueExpException::readObject()",
+        "x": 80,
+        "y": 40
+      },
+      {
+        "id": "n1",
+        "label": "JSONObject::toString()",
+        "x": 80,
+        "y": 130
+      },
+      {
+        "id": "n2",
+        "label": "JSONObject::toJSONString()",
+        "x": 80,
+        "y": 220
+      },
+      {
+        "id": "n3",
+        "label": "→ 触发 getter 调用",
+        "x": 80,
+        "y": 310
+      },
+      {
+        "id": "n4",
+        "label": "TemplatesImpl::getOutputProperties()",
+        "x": 80,
+        "y": 400
+      },
+      {
+        "id": "n5",
+        "label": "TemplatesImpl::newTransformer()",
+        "x": 80,
+        "y": 490
+      },
+      {
+        "id": "n6",
+        "label": "BytecodeClass::执行恶意类",
+        "x": 80,
+        "y": 580
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      },
+      {
+        "fromId": "n5",
+        "toId": "n6",
+        "label": ""
+      }
+    ]
+  },
+  "Fastjson2": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "BadAttributeValueExpException::readObject()",
+        "x": 80,
+        "y": 40
+      },
+      {
+        "id": "n1",
+        "label": "JSONObject::toString()",
+        "x": 80,
+        "y": 130
+      },
+      {
+        "id": "n2",
+        "label": "Fastjson2 Serializer",
+        "x": 80,
+        "y": 220
+      },
+      {
+        "id": "n3",
+        "label": "→ 触发 getter 调用",
+        "x": 80,
+        "y": 310
+      },
+      {
+        "id": "n4",
+        "label": "TemplatesImpl::getOutputProperties()",
+        "x": 80,
+        "y": 400
+      },
+      {
+        "id": "n5",
+        "label": "TemplatesImpl::newTransformer()",
+        "x": 80,
+        "y": 490
+      },
+      {
+        "id": "n6",
+        "label": "BytecodeClass::执行恶意类",
+        "x": 80,
+        "y": 580
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      },
+      {
+        "fromId": "n5",
+        "toId": "n6",
+        "label": ""
+      }
+    ]
+  },
+  "FileUpload1": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "DiskFileItem::readObject()",
+        "x": 80,
+        "y": 40
+      },
+      {
+        "id": "n1",
+        "label": "DiskFileItem::getOutputStream()",
+        "x": 80,
+        "y": 130
+      },
+      {
+        "id": "n2",
+        "label": "DeferredFileOutputStream::getOutputStream()",
+        "x": 80,
+        "y": 220
+      },
+      {
+        "id": "n3",
+        "label": "→ 向目标路径写入恶意文件",
+        "x": 80,
+        "y": 310
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      }
+    ]
+  },
+  "Hibernate1": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "HashMap::readObject()",
+        "x": 80,
+        "y": 40
+      },
+      {
+        "id": "n1",
+        "label": "HashMap::hash()",
+        "x": 80,
+        "y": 130
+      },
+      {
+        "id": "n2",
+        "label": "ComponentType::hashCode()",
+        "x": 80,
+        "y": 220
+      },
+      {
+        "id": "n3",
+        "label": "PojoComponentTuplizer::getProperty()",
+        "x": 80,
+        "y": 310
+      },
+      {
+        "id": "n4",
+        "label": "Getter::get()",
+        "x": 80,
+        "y": 400
+      },
+      {
+        "id": "n5",
+        "label": "TemplatesImpl::getOutputProperties()",
+        "x": 80,
+        "y": 490
+      },
+      {
+        "id": "n6",
+        "label": "BytecodeClass::执行恶意类",
+        "x": 80,
+        "y": 580
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      },
+      {
+        "fromId": "n5",
+        "toId": "n6",
+        "label": ""
+      }
+    ]
+  },
+  "Hibernate2": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "HashMap::readObject()",
+        "x": 80,
+        "y": 40
+      },
+      {
+        "id": "n1",
+        "label": "HashMap::hash()",
+        "x": 80,
+        "y": 130
+      },
+      {
+        "id": "n2",
+        "label": "ComponentType::hashCode()",
+        "x": 80,
+        "y": 220
+      },
+      {
+        "id": "n3",
+        "label": "PojoComponentTuplizer::getProperty()",
+        "x": 80,
+        "y": 310
+      },
+      {
+        "id": "n4",
+        "label": "Getter::get()",
+        "x": 80,
+        "y": 400
+      },
+      {
+        "id": "n5",
+        "label": "Runtime::exec(cmd)",
+        "x": 80,
+        "y": 490
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      }
+    ]
+  },
+  "Jackson1": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "HashMap::readObject()",
+        "x": 80,
+        "y": 40
+      },
+      {
+        "id": "n1",
+        "label": "HashMap::hash()",
+        "x": 80,
+        "y": 130
+      },
+      {
+        "id": "n2",
+        "label": "POJOPropertyBuilder::hashCode()",
+        "x": 80,
+        "y": 220
+      },
+      {
+        "id": "n3",
+        "label": "POJOPropertyBuilder::getFields()",
+        "x": 80,
+        "y": 310
+      },
+      {
+        "id": "n4",
+        "label": "TemplatesImpl::getOutputProperties()",
+        "x": 80,
+        "y": 400
+      },
+      {
+        "id": "n5",
+        "label": "TemplatesImpl::newTransformer()",
+        "x": 80,
+        "y": 490
+      },
+      {
+        "id": "n6",
+        "label": "BytecodeClass::执行恶意类",
+        "x": 80,
+        "y": 580
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      },
+      {
+        "fromId": "n5",
+        "toId": "n6",
+        "label": ""
+      }
+    ]
+  },
+  "Jackson2": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "HashMap::readObject()",
+        "x": 80,
+        "y": 40
+      },
+      {
+        "id": "n1",
+        "label": "HashMap::hash()",
+        "x": 80,
+        "y": 130
+      },
+      {
+        "id": "n2",
+        "label": "POJOPropertyBuilder::hashCode()",
+        "x": 80,
+        "y": 220
+      },
+      {
+        "id": "n3",
+        "label": "POJOPropertyBuilder::getFields()",
+        "x": 80,
+        "y": 310
+      },
+      {
+        "id": "n4",
+        "label": "Runtime::exec(cmd)",
+        "x": 80,
+        "y": 400
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      }
+    ]
+  },
+  "JavassistWeld1": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "HashMap::readObject()",
+        "x": 80,
+        "y": 40
+      },
+      {
+        "id": "n1",
+        "label": "HashMap::hash()",
+        "x": 80,
+        "y": 130
+      },
+      {
+        "id": "n2",
+        "label": "BeanDeploymentArchiveImpl::hashCode()",
+        "x": 80,
+        "y": 220
+      },
+      {
+        "id": "n3",
+        "label": "BeanDeploymentArchiveImpl::getBeans()",
+        "x": 80,
+        "y": 310
+      },
+      {
+        "id": "n4",
+        "label": "TemplatesImpl::newTransformer()",
+        "x": 80,
+        "y": 400
+      },
+      {
+        "id": "n5",
+        "label": "BytecodeClass::执行恶意类",
+        "x": 80,
+        "y": 490
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      }
+    ]
+  },
+  "JBossInterceptors1": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "HashMap::readObject()",
+        "x": 80,
+        "y": 40
+      },
+      {
+        "id": "n1",
+        "label": "HashMap::hash()",
+        "x": 80,
+        "y": 130
+      },
+      {
+        "id": "n2",
+        "label": "ClassProxyMethodHandler::hashCode()",
+        "x": 80,
+        "y": 220
+      },
+      {
+        "id": "n3",
+        "label": "ClassProxyMethodHandler::getInstance()",
+        "x": 80,
+        "y": 310
+      },
+      {
+        "id": "n4",
+        "label": "TemplatesImpl::newTransformer()",
+        "x": 80,
+        "y": 400
+      },
+      {
+        "id": "n5",
+        "label": "BytecodeClass::执行恶意类",
+        "x": 80,
+        "y": 490
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      }
+    ]
+  },
+  "Jdk7u21": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "LinkedHashSet::readObject()",
+        "x": 80,
+        "y": 40
+      },
+      {
+        "id": "n1",
+        "label": "LinkedHashSet::add() → HashMap::put()",
+        "x": 80,
+        "y": 130
+      },
+      {
+        "id": "n2",
+        "label": "Proxy(Templates)::equals() / hashCode()",
+        "x": 80,
+        "y": 220
+      },
+      {
+        "id": "n3",
+        "label": "AnnotationInvocationHandler::invoke()",
+        "x": 80,
+        "y": 310
+      },
+      {
+        "id": "n4",
+        "label": "memberValues['f5a5a608'] -> TemplatesImpl",
+        "x": 80,
+        "y": 400
+      },
+      {
+        "id": "n5",
+        "label": "TemplatesImpl::newTransformer() / getOutputProperties()",
+        "x": 80,
+        "y": 490
+      },
+      {
+        "id": "n6",
+        "label": "BytecodeClass::执行恶意类",
+        "x": 80,
+        "y": 580
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      },
+      {
+        "fromId": "n5",
+        "toId": "n6",
+        "label": ""
+      }
+    ]
+  },
+  "JSON1": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "HashMap::readObject()",
+        "x": 80,
+        "y": 40
+      },
+      {
+        "id": "n1",
+        "label": "HashMap::hash()",
+        "x": 80,
+        "y": 130
+      },
+      {
+        "id": "n2",
+        "label": "JSONObject::hashCode()",
+        "x": 80,
+        "y": 220
+      },
+      {
+        "id": "n3",
+        "label": "JSONObject::put()",
+        "x": 80,
+        "y": 310
+      },
+      {
+        "id": "n4",
+        "label": "TemplatesImpl::getOutputProperties()",
+        "x": 80,
+        "y": 400
+      },
+      {
+        "id": "n5",
+        "label": "TemplatesImpl::newTransformer()",
+        "x": 80,
+        "y": 490
+      },
+      {
+        "id": "n6",
+        "label": "BytecodeClass::执行恶意类",
+        "x": 80,
+        "y": 580
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      },
+      {
+        "fromId": "n5",
+        "toId": "n6",
+        "label": ""
+      }
+    ]
+  },
+  "Jython1": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "PySystemState::readObject()",
+        "x": 80,
+        "y": 40
+      },
+      {
+        "id": "n1",
+        "label": "PySystemState::initialize()",
+        "x": 80,
+        "y": 130
+      },
+      {
+        "id": "n2",
+        "label": "Py::initProxy()",
+        "x": 80,
+        "y": 220
+      },
+      {
+        "id": "n3",
+        "label": "PyObject::__call__()",
+        "x": 80,
+        "y": 310
+      },
+      {
+        "id": "n4",
+        "label": "Runtime::exec(cmd)",
+        "x": 80,
+        "y": 400
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      }
+    ]
+  },
+  "Jython2": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "PySystemState::readObject()",
+        "x": 80,
+        "y": 40
+      },
+      {
+        "id": "n1",
+        "label": "PySystemState::initialize()",
+        "x": 80,
+        "y": 130
+      },
+      {
+        "id": "n2",
+        "label": "Py::initProxy()",
+        "x": 80,
+        "y": 220
+      },
+      {
+        "id": "n3",
+        "label": "PyObject::__call__()",
+        "x": 80,
+        "y": 310
+      },
+      {
+        "id": "n4",
+        "label": "TemplatesImpl::newTransformer()",
+        "x": 80,
+        "y": 400
+      },
+      {
+        "id": "n5",
+        "label": "BytecodeClass::执行恶意类",
+        "x": 80,
+        "y": 490
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      }
+    ]
+  },
+  "MozillaRhino1": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "BadAttributeValueExpException::readObject()",
+        "x": 80,
+        "y": 40
+      },
+      {
+        "id": "n1",
+        "label": "NativeObject::toString()",
+        "x": 80,
+        "y": 130
+      },
+      {
+        "id": "n2",
+        "label": "NativeObject::getDefaultValue()",
+        "x": 80,
+        "y": 220
+      },
+      {
+        "id": "n3",
+        "label": "ScriptRuntime::call()",
+        "x": 80,
+        "y": 310
+      },
+      {
+        "id": "n4",
+        "label": "Runtime::exec(cmd)",
+        "x": 80,
+        "y": 400
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      }
+    ]
+  },
+  "MozillaRhino2": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "BadAttributeValueExpException::readObject()",
+        "x": 80,
+        "y": 40
+      },
+      {
+        "id": "n1",
+        "label": "NativeObject::toString()",
+        "x": 80,
+        "y": 130
+      },
+      {
+        "id": "n2",
+        "label": "NativeObject::getDefaultValue()",
+        "x": 80,
+        "y": 220
+      },
+      {
+        "id": "n3",
+        "label": "ScriptRuntime::call()",
+        "x": 80,
+        "y": 310
+      },
+      {
+        "id": "n4",
+        "label": "TemplatesImpl::newTransformer()",
+        "x": 80,
+        "y": 400
+      },
+      {
+        "id": "n5",
+        "label": "BytecodeClass::执行恶意类",
+        "x": 80,
+        "y": 490
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      }
+    ]
+  },
+  "Myfaces1": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "HashMap::readObject()",
+        "x": 80,
+        "y": 40
+      },
+      {
+        "id": "n1",
+        "label": "HashMap::hash()",
+        "x": 80,
+        "y": 130
+      },
+      {
+        "id": "n2",
+        "label": "UIComponentBase$AdapterFactory::hashCode()",
+        "x": 80,
+        "y": 220
+      },
+      {
+        "id": "n3",
+        "label": "UIComponentBase$AdapterFactory::getAdapter()",
+        "x": 80,
+        "y": 310
+      },
+      {
+        "id": "n4",
+        "label": "ELContext::getELResolver()",
+        "x": 80,
+        "y": 400
+      },
+      {
+        "id": "n5",
+        "label": "ValueExpression::getValue()",
+        "x": 80,
+        "y": 490
+      },
+      {
+        "id": "n6",
+        "label": "Runtime::exec(cmd)",
+        "x": 80,
+        "y": 580
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      },
+      {
+        "fromId": "n5",
+        "toId": "n6",
+        "label": ""
+      }
+    ]
+  },
+  "Myfaces2": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "HashMap::readObject()",
+        "x": 80,
+        "y": 40
+      },
+      {
+        "id": "n1",
+        "label": "HashMap::hash()",
+        "x": 80,
+        "y": 130
+      },
+      {
+        "id": "n2",
+        "label": "UIComponentBase$AdapterFactory::hashCode()",
+        "x": 80,
+        "y": 220
+      },
+      {
+        "id": "n3",
+        "label": "UIComponentBase$AdapterFactory::getAdapter()",
+        "x": 80,
+        "y": 310
+      },
+      {
+        "id": "n4",
+        "label": "ELContext::getELResolver()",
+        "x": 80,
+        "y": 400
+      },
+      {
+        "id": "n5",
+        "label": "ValueExpression::getValue()",
+        "x": 80,
+        "y": 490
+      },
+      {
+        "id": "n6",
+        "label": "TemplatesImpl::newTransformer()",
+        "x": 80,
+        "y": 580
+      },
+      {
+        "id": "n7",
+        "label": "BytecodeClass::执行恶意类",
+        "x": 80,
+        "y": 670
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      },
+      {
+        "fromId": "n5",
+        "toId": "n6",
+        "label": ""
+      },
+      {
+        "fromId": "n6",
+        "toId": "n7",
+        "label": ""
+      }
+    ]
+  },
+  "ROME": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "HashMap::readObject()",
+        "x": 80,
+        "y": 40
+      },
+      {
+        "id": "n1",
+        "label": "HashMap::hash()",
+        "x": 80,
+        "y": 130
+      },
+      {
+        "id": "n2",
+        "label": "ObjectBean::hashCode()",
+        "x": 80,
+        "y": 220
+      },
+      {
+        "id": "n3",
+        "label": "ObjectBean::toString()",
+        "x": 80,
+        "y": 310
+      },
+      {
+        "id": "n4",
+        "label": "EqualsBean::beanEquals()",
+        "x": 80,
+        "y": 400
+      },
+      {
+        "id": "n5",
+        "label": "TemplatesImpl::getOutputProperties()",
+        "x": 80,
+        "y": 490
+      },
+      {
+        "id": "n6",
+        "label": "TemplatesImpl::newTransformer()",
+        "x": 80,
+        "y": 580
+      },
+      {
+        "id": "n7",
+        "label": "BytecodeClass::执行恶意类",
+        "x": 80,
+        "y": 670
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      },
+      {
+        "fromId": "n5",
+        "toId": "n6",
+        "label": ""
+      },
+      {
+        "fromId": "n6",
+        "toId": "n7",
+        "label": ""
+      }
+    ]
+  },
+  "Vaadin1": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "HashMap::readObject()",
+        "x": 80,
+        "y": 40
+      },
+      {
+        "id": "n1",
+        "label": "HashMap::hash()",
+        "x": 80,
+        "y": 130
+      },
+      {
+        "id": "n2",
+        "label": "BrowserEnvironment::hashCode()",
+        "x": 80,
+        "y": 220
+      },
+      {
+        "id": "n3",
+        "label": "BrowserEnvironment::getOsName()",
+        "x": 80,
+        "y": 310
+      },
+      {
+        "id": "n4",
+        "label": "TemplatesImpl::getOutputProperties()",
+        "x": 80,
+        "y": 400
+      },
+      {
+        "id": "n5",
+        "label": "TemplatesImpl::newTransformer()",
+        "x": 80,
+        "y": 490
+      },
+      {
+        "id": "n6",
+        "label": "BytecodeClass::执行恶意类",
+        "x": 80,
+        "y": 580
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      },
+      {
+        "fromId": "n5",
+        "toId": "n6",
+        "label": ""
+      }
+    ]
+  },
+  "Wicket1": {
+    "nodes": [
+      {
+        "id": "n0",
+        "label": "HashMap::readObject()",
+        "x": 80,
+        "y": 40
+      },
+      {
+        "id": "n1",
+        "label": "HashMap::hash()",
+        "x": 80,
+        "y": 130
+      },
+      {
+        "id": "n2",
+        "label": "ClientProperties::hashCode()",
+        "x": 80,
+        "y": 220
+      },
+      {
+        "id": "n3",
+        "label": "ClientProperties::isBrowserInternetExplorer()",
+        "x": 80,
+        "y": 310
+      },
+      {
+        "id": "n4",
+        "label": "TemplatesImpl::getOutputProperties()",
+        "x": 80,
+        "y": 400
+      },
+      {
+        "id": "n5",
+        "label": "TemplatesImpl::newTransformer()",
+        "x": 80,
+        "y": 490
+      },
+      {
+        "id": "n6",
+        "label": "BytecodeClass::执行恶意类",
+        "x": 80,
+        "y": 580
+      }
+    ],
+    "edges": [
+      {
+        "fromId": "n0",
+        "toId": "n1",
+        "label": ""
+      },
+      {
+        "fromId": "n1",
+        "toId": "n2",
+        "label": ""
+      },
+      {
+        "fromId": "n2",
+        "toId": "n3",
+        "label": ""
+      },
+      {
+        "fromId": "n3",
+        "toId": "n4",
+        "label": ""
+      },
+      {
+        "fromId": "n4",
+        "toId": "n5",
+        "label": ""
+      },
+      {
+        "fromId": "n5",
+        "toId": "n6",
+        "label": ""
+      }
+    ]
+  }
+}
