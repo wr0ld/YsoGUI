@@ -182,5 +182,77 @@
       "toId" : "n6",
       "label" : ""
     } ]
+  },
+  "CommonsBeanutils1" : {
+    "nodes" : [ {
+      "id" : "n0",
+      "label" : "PriorityQueue::readObject()",
+      "x" : 80.0,
+      "y" : 40.0
+    }, {
+      "id" : "n1",
+      "label" : "PriorityQueue::heapify()",
+      "x" : 80.0,
+      "y" : 130.0
+    }, {
+      "id" : "n2",
+      "label" : "BeanComparator::compare()",
+      "x" : 80.0,
+      "y" : 220.0
+    }, {
+      "id" : "n3",
+      "label" : "PropertyUtils::getProperty()",
+      "x" : 80.0,
+      "y" : 310.0
+    }, {
+      "id" : "n4",
+      "label" : "TemplatesImpl::getOutputProperties()",
+      "x" : 80.0,
+      "y" : 400.0
+    }, {
+      "id" : "n5",
+      "label" : "TemplatesImpl::newTransformer()",
+      "x" : 80.0,
+      "y" : 490.0
+    }, {
+      "id" : "n6",
+      "label" : "TemplatesImpl::getTransletInstance()",
+      "x" : 80.0,
+      "y" : 580.0
+    }, {
+      "id" : "n7",
+      "label" : "BytecodeClass::执行恶意类",
+      "x" : 80.0,
+      "y" : 670.0
+    } ],
+    "edges" : [ {
+      "fromId" : "n0",
+      "toId" : "n1",
+      "label" : ""
+    }, {
+      "fromId" : "n1",
+      "toId" : "n2",
+      "label" : ""
+    }, {
+      "fromId" : "n2",
+      "toId" : "n3",
+      "label" : ""
+    }, {
+      "fromId" : "n3",
+      "toId" : "n4",
+      "label" : ""
+    }, {
+      "fromId" : "n4",
+      "toId" : "n5",
+      "label" : ""
+    }, {
+      "fromId" : "n5",
+      "toId" : "n6",
+      "label" : ""
+    }, {
+      "fromId" : "n6",
+      "toId" : "n7",
+      "label" : ""
+    } ]
   }
 }
