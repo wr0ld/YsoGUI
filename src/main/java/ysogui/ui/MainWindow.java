@@ -274,8 +274,8 @@ public class MainWindow {
                     }
                     saveAppState();
 
-                    // ysoserial 加载后自动检测 lib/ 目录下的 marshalsec jar
-                    autoDetectMarshalsec();
+                    // ysoserial 加载后自动恢复上次的 marshalsec，找不到再尝试 lib/ 自动检测
+                    restoreLastMarshalsec();
                 });
             } catch (Exception e) {
                 Platform.runLater(() -> {
@@ -308,8 +308,25 @@ public class MainWindow {
     }
 
     /**
+     * 恢复上次保存的 marshalsec jar 路径；如果不可用，再回退到 lib/ 自动检测
+     */
+    private void restoreLastMarshalsec() {
+        if (loader == null) return; // 没有加载 ysoserial
+
+        String savedPath = appState.getProperty("lastMarshalsec");
+        if (savedPath != null && !savedPath.trim().isEmpty()) {
+            File f = new File(savedPath);
+            if (f.exists() && f.isFile()) {
+                loadMarshalsecJar(f);
+                return;
+            }
+        }
+
+        autoDetectMarshalsec();
+    }
+
+    /**
      * 自动检测 lib/ 目录下的 marshalsec jar
-     * 在 ysoserial 加载后自动调用
      */
     private void autoDetectMarshalsec() {
         if (loader == null) return; // 没有加载 ysoserial

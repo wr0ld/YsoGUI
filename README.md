@@ -134,7 +134,7 @@
 本工具本身是 GUI 外壳，不内置完整利用生态。使用时通常需要你自己准备：
 
 - `ysoserial.jar`
-  - 项目地址：<https://github.com/frohoff/ysoserial>
+  - 项目地址：<https://github.com/Y4er/ysoserial>
 - `marshalsec.jar`
   - 项目地址：<https://github.com/mbechler/marshalsec>
 
@@ -143,6 +143,8 @@
 ---
 
 ## 构建
+
+需要 **JDK 8+**，不能用纯 `JRE` 环境。
 
 ```bash
 mvn package -DskipTests
